@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="../static/css/bootstrap-theme.min.css"
+          th:href="@{/css/bootstrap-theme.min.css}"/>
+</head>
+<body>
+    <p th:text="'最新つぶやき: ' + ${accessToken} + '!'" />
+    <form action="refreshMypage" method="post">
+    	<input type="text" name="tweet" size="40"/>
+    	<input type="submit" value="つぶやく"/>
+    </form>
+    <table>
+		<thead>
+			<tr>
+				<th>TWEET</th>
+			</tr>
+		</thead>
+		<tbody th:remove="all-but-first">
+			<tr th:each="timeLine : ${timelineList}" >
+				<td th:text="${timeLine.text}"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

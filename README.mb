@@ -1,0 +1,9 @@
+spring bootで作るTwitter連携アプリのサンプルプロジェクトです。
+
+「初心者大歓迎! webアプリを作ってみよう!」http://connpass.com/event/10831/ での経験者クラスで使用したソースコードのサンプルになります。
+
+### 注意事項
+サンプルでは、簡単のためセッションへの保存・取得にHttpSessionを直接使っています。
+
+通常、SpriingではHttpSessionを直接触ることは少ないのでご注意ください、
+詳しくは、http://www.java-allandsundry.com/2014/04/using-http-session-with-spring-based.html やhttps://terasolunaorg.github.io/guideline/public_review/ArchitectureInDetail/SessionManagement.html をご参照ください。

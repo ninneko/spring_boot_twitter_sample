@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="../static/css/bootstrap-theme.min.css"
+          th:href="@{/css/bootstrap-theme.min.css}"/>
+</head>
+<body>
+	<header>
+		<h1>Twitter</h1>
+	</header>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3">
+					<table class="table">
+						<tbody>
+							<tr>
+								<td>
+									<img th:src="${user.profileImageURL}"  class="img-polaroid"/>
+								</td>
+								<td>
+									<h4 th:text="${user.name}"></h4>
+									<p th:text="${user.screenName}"></p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>ツイート数</p>
+									<p th:text="${user.statusesCount}"></p>
+								</td>
+								<td>
+									<p>フォロー</p>
+									<p th:text="${user.friendsCount}"></p>
+								</td>
+								<td>
+									<p>フォロワー</p>
+									<p th:text="${user.followersCount}"></p>
+								</td>
+							</tr>
+						</tbody>
+				</table>
+    			<form action="doTweet" method="post">
+    				<input type="text" name="tweet" size="40"/>
+    				<input type="submit" value="つぶやく"/>
+    			</form>
+    		</div>
+    		<div class="col-md-9">
+	    		<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>アカウント名</th>
+							<th>投稿内容</th>
+						</tr>
+					</thead>
+					<tbody th:remove="all-but-first">
+						<tr th:each="timeLine : ${timelineList}" >
+							<td>
+								<img th:src="${timeLine.user.profileImageURL}"  class="img-polaroid"/>
+							</td>
+								<td th:text="${timeLine.user.screenName}"></td>
+								<td th:text="${timeLine.text}"></td>
+							</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
